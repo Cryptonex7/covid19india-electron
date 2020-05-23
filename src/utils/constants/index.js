@@ -1,1 +1,1 @@
-export const API_URL = 'https://devapi.covidanalytics.live';
+export const API_URL = 'https://api.covid19india.org';

@@ -8,7 +8,7 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexDirection: 'column',
     padding: 10,
-    paddingTop: 80,
+    paddingTop: 10,
     position: 'absolute',
     top: 0,
   },
@@ -51,19 +51,16 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    marginTop: 40,
+    marginTop: 10,
     marginBottom: 18,
     width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      flexDirection: 'column',
-    },
   },
   headerImage: {
     height: 60,
     marginRight: 10,
     [theme.breakpoints.up('sm')]: {
-      marginRight: 0,
-      height: 180,
+      marginRight: 10,
+      height: 60,
     },
   },
   headerText: {
@@ -82,11 +79,12 @@ export const useStyles = makeStyles((theme) => ({
       fontSize: 18,
     },
   },
-
-  // Particle Styles
-  particles: {
-    height: '100vh',
-    position: 'fixed',
-    top: 0,
+  stat: {
+    margin: 10,
+    marginBottom: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 }));

@@ -13,7 +13,7 @@ const HomePage = lazy(() => import('./pages/HomePage'));
 function Router(props) {
   return (
     <Switch>
-      <Route exact path="/" component={suspenseHoc(headerHoc(HomePage))} />
+      <Route exact path="/" component={suspenseHoc(HomePage)} />
       <Route exact path="/quiz" component={suspenseHoc(headerHoc(QuizPage))} />
       <Route exact path="/news" component={suspenseHoc(headerHoc(NewsPage))} />
     </Switch>

@@ -1,7 +1,6 @@
 import React from 'react';
 import {useStyles} from '../../styles';
 import logo from '../../../../assets/logo.svg';
-import PageTitle from '../../../../modules/PageTitle';
 
 function LandingSection() {
   const classes = useStyles();
@@ -16,7 +15,6 @@ function LandingSection() {
           </div>
         </div>
       </div>
-      <PageTitle>HOME</PageTitle>
     </>
   );
 }

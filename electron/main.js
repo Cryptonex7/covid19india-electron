@@ -18,8 +18,8 @@ function createWindow() {
       slashes: true,
     });
   mainWindow = new BrowserWindow({
-    height: 800,
-    width: 500,
+    height: 300,
+    width: 600,
     frame: false,
     resizeable: false,
     show: false,
