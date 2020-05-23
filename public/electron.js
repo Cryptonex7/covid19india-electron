@@ -1,6 +1,6 @@
 const {app, BrowserWindow, Tray, Menu} = require('electron');
 const path = require('path');
-const url = require('url');
+const isDev = require('electron-is-dev');
 
 let mainWindow;
 let tray;
@@ -8,15 +8,14 @@ let tray;
 app.on('ready', createWindow);
 
 function createWindow() {
+  console.log(process.env.ELECTRON_START_URL, process.env.NODE_ENV, isDev);
   process.platform === 'darwin' && app.dock.hide();
-  console.log(process.env.ELECTRON_START_URL);
-  const startURL =
-    process.env.ELECTRON_START_URL ||
-    url.format({
-      pathname: path.join(__dirname, '../index.html'),
-      protocol: 'file:',
-      slashes: true,
-    });
+
+  // TODO: Figure out ways to put up app from Build folder
+
+  const startURL = !isDev
+    ? 'https://covid19india.org'
+    : 'https://covidanalytics.live';
   mainWindow = new BrowserWindow({
     height: 300,
     width: 600,
@@ -30,7 +29,7 @@ function createWindow() {
   mainWindow.on('closed', () => (mainWindow = null));
   mainWindow.on('blur', () => mainWindow.hide());
 
-  tray = new Tray(path.join(__dirname, '../public/logo192.png'));
+  tray = new Tray(path.join(__dirname, './logo192.png'));
   tray.setToolTip('Covid Analytics India - Lite!');
   tray.on('click', (event, bounds) => {
     const {x, y} = bounds;

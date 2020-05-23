@@ -1,7 +1,7 @@
 import React, {lazy} from 'react';
 import {Switch, Route} from 'react-router';
 import suspenseHoc from './hoc/suspenseHoc';
-import withStyles from '@material-ui/core/styles/withStyles';
+import withStyles from '@material-ui/styles/withStyles';
 import './App.scss';
 import {globalStyles} from './globalStyles';
 
