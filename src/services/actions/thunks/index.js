@@ -18,7 +18,6 @@ export const getMetrics = async (dispatch) => {
       type: actions.GET_GRAPH_DATA_ALL_SUCCESS,
       payload: res.data,
     });
-    console.log(res.data);
     dispatch({type: actions.SET_LOADER, payload: false});
   } catch (err) {
     dispatch({type: actions.GET_GRAPH_DATA_ALL_FAILED, payload: err});
