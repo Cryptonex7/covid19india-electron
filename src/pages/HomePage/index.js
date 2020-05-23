@@ -8,17 +8,15 @@ function HomePage() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const graphData = useSelector((state) => state.thunk.graphData);
-  const currentData =
-    graphData.cases_time_series[graphData.cases_time_series.length - 1];
+
   useEffect(() => {
-    const fetchGraphData = async () => {
-      await dispatch(getMetrics);
-    };
-    const interval = setInterval(() => {
-      fetchGraphData();
-    }, 1000 * 60 * 60);
-    return () => clearInterval(interval);
+    dispatch(getMetrics);
+
+    setInterval(() => {
+      dispatch(getMetrics);
+    }, 1000 * 60 * 30); // ? 30 mins of interval
   }, [dispatch]);
+
   return Object.keys(graphData).length > 0 ? (
     <div className={classes.flexCol}>
       <div className={classes.root}>
@@ -29,24 +27,42 @@ function HomePage() {
             <div className={classes.stat}>
               <h1 style={{color: '#FF1D02'}}>Confirmed</h1>
               <h2 style={{color: '#FF1D02'}}>
-                {parseInt(currentData.totalconfirmed).toLocaleString()}
+                {parseInt(
+                  graphData.cases_time_series[
+                    graphData.cases_time_series.length - 1
+                  ].totalconfirmed
+                ).toLocaleString()}
               </h2>
             </div>
             <div className={classes.stat}>
               <h1 style={{color: '#7FDE94'}}>Recovered</h1>
               <h2 style={{color: '#7FDE94'}}>
-                {parseInt(currentData.totalrecovered).toLocaleString()}
+                {parseInt(
+                  graphData.cases_time_series[
+                    graphData.cases_time_series.length - 1
+                  ].totalrecovered
+                ).toLocaleString()}
               </h2>
             </div>
             <div className={classes.stat}>
               <h1 style={{color: '#BCB7AD'}}>Deceased</h1>
               <h2 style={{color: '#BCB7AD'}}>
-                {parseInt(currentData.totaldeceased).toLocaleString()}
+                {parseInt(
+                  graphData.cases_time_series[
+                    graphData.cases_time_series.length - 1
+                  ].totaldeceased
+                ).toLocaleString()}
               </h2>
             </div>
           </div>
           <h6 style={{margin: 0, color: '#329BF1'}}>
-            as of {currentData.date} {new Date().getFullYear()}
+            as of{' '}
+            {
+              graphData.cases_time_series[
+                graphData.cases_time_series.length - 1
+              ].date
+            }{' '}
+            {new Date().getFullYear()}
           </h6>
         </div>
       </div>
